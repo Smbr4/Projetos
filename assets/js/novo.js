@@ -70,7 +70,7 @@ function salvarTarefas(){
         console.log(arrayTarefas);
     }
 
-    listaJson = JSON.stringify(arrayTarefas);
+    listaJson = JSON.stringify(arrayTarefas);// Serialização
 
     //no setItem('como eu quero salvar', o que vou salvar);
     //armazena em um espaço reservado do navegador
@@ -82,7 +82,7 @@ function adicionarSalvas(){
     const tarefasJ = localStorage.getItem('tarefas');
 
     // converte a string JSON em array
-    const tarefaA = JSON.parse(tarefasJ);
+    const tarefaA = JSON.parse(tarefasJ);// Desserialização
     
     //percorre o array exibindo
     for (let tarefa of tarefaA){
