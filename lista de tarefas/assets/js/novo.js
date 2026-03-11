@@ -1,94 +1,100 @@
-const tarefa = document.querySelector('.tarefa');
-const botao = document.querySelector('.enviar');
-const exibir = document.querySelector('.exibir');
+function tarefas() {
+    return {
+        tarefa:document.querySelector('.tarefa'),
+        exibir: document.querySelector('.exibir'),
+        botao: document.querySelector('.enviar'),
+        container: document.querySelector('.container'),
 
-//eventos do site
+        mostrar() {
+            this.verificar();
+            this.apagarItem();
+        },
 
-// monitora o click no botão enviar
-botao.addEventListener('click', function(e){
-    e.preventDefault();
-    if (!tarefa.value) return;
-    criarLista();
-})
+        verificar(){
+            this.botao.addEventListener('click', e => {
+                e.preventDefault();
 
-//monitora se o usuário pressiona enter 
-tarefa.addEventListener('keypress', function(e){
-    if (e.key === 'Enter'){
-        e.preventDefault();
-        if (!tarefa.value) return;
-        criarLista();
+                if(!this.tarefa) {
+                    alert('Favor adicionar uma tarefa');
+                    return;
+                };
+                this.criarLista();
+           }),
+
+            this.tarefa.addEventListener('keypress', e => {
+                if(!this.tarefa) {
+                    alert('Favor adicionar uma tarefa');
+                    return;
+                };
+                if(e.key === 'Enter') this.criarLista();
+           })
+        },
+
+        apagarItem(){
+            this.container.addEventListener('click', e =>{
+                let el = e.target;
+
+                if(el.classList.contains('apagar')){
+                    el.parentElement.remove();
+                    this.armazenarTarefa();
+                }
+            })
+        },
+
+        criarLista(textoTarefa) {
+            let lista = document.createElement('li');
+
+            if(textoTarefa){
+                lista.innerText = textoTarefa;
+            }else {
+                if (!this.tarefa.value.trim()) return; // Evita tarefa vazia
+                lista.innerText = this.tarefa.value; }
+
+            this.exibir.appendChild(lista);
+            this.botaoDelete(lista);
+            this.limparInput();
+            this.armazenarTarefa();
+        },
+
+        limparInput(){
+            this.tarefa.focus();
+            this.tarefa.value = '';
+        },
+
+        botaoDelete(li){
+            let apagar = document.createElement('button');
+            apagar.setAttribute('class', 'apagar');
+            apagar.innerText = 'apagar';
+            li.appendChild(apagar);
+        },
+
+        armazenarTarefa(){
+            let task = this.exibir.querySelectorAll('li');
+            let tarefasLista = [];
+
+            for(t of task){
+                let tareTexto = t.innerText;
+                tareTexto = tareTexto.replace('apagar', '').trim(); // Remove o texto do botão
+                tarefasLista.push(tareTexto);
+            }
+            
+            const taskA = JSON.stringify(tarefasLista);
+
+            localStorage.setItem('tarefaSalva', taskA)
+        },
+
+        restaurarTarefa(){
+            const tarefaJ = localStorage.getItem('tarefaSalva');
+            if (!tarefaJ) return;
+            const tarefaA = JSON.parse(tarefaJ);
+
+            for(t of tarefaA){
+                this.criarLista(t);
+            }
+        }
     }   
-})
-
-//espera o usuário clicar em apagar
-document.addEventListener('click', function(e){
-    let el = e.target;
-
-    if(el.classList.contains('apagar')){
-        el.parentElement.remove();
-        salvarTarefas();
-    }
-})
-
-//funções para funcionamento do site
-
-function criarLista(textoTarefa){
-    const li = document.createElement('li');
-    //se veio texto do localStorage, usa ele. Se não, usa o que está no input
-    if (textoTarefa){
-        li.innerText = textoInput;
-    }else {
-        li.innerText = tarefa.value;
-    }
-
-    exibir.appendChild(li);
-    botaoApagar(li);
-    limparInput();
-    salvarTarefas();
 }
 
-function limparInput(){
-    tarefa.value = '';
-    tarefa.focus();
-}
-
-function botaoApagar(li){
-    const apagar = document.createElement('button');
-    apagar.innerText = 'Apagar';
-    apagar.setAttribute('class', 'apagar');
-    li.appendChild(apagar);
-}
-
-function salvarTarefas(){
-    const listTa = exibir.querySelectorAll('li');
-    const arrayTarefas = [];
-
-    for (let tarefa of listTa){
-        let tarefaTexto = tarefa.innerText;
-        tarefaTexto = tarefaTexto.replace('Apagar', ' ').trim();
-        arrayTarefas.push(tarefaTexto);
-        console.log(arrayTarefas);
-    }
-
-    listaJson = JSON.stringify(arrayTarefas);// Serialização
-
-    //no setItem('como eu quero salvar', o que vou salvar);
-    //armazena em um espaço reservado do navegador
-    localStorage.setItem('tarefas', listaJson);
-}
-
-function adicionarSalvas(){
-    //pega a string json e armazena
-    const tarefasJ = localStorage.getItem('tarefas');
-
-    // converte a string JSON em array
-    const tarefaA = JSON.parse(tarefasJ);// Desserialização
-    
-    //percorre o array exibindo
-    for (let tarefa of tarefaA){
-        criarLista(tarefa);
-    }
-}
-
-// é responsável por guardar os itens da lista quando a página for atualizada
-adicionarSalvas();
+const listaT = tarefas();
+listaT.mostrar();
+listaT.restaurarTarefa();
