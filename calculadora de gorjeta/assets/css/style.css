@@ -1,0 +1,15 @@
+.calculadora {
+    background: blue;
+    width: 100%;
+    padding: 20px;
+}
+
+@media(min-width: 376px){
+    .calculadora{
+        width: 600px;
+        display: flex;
+    }
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
