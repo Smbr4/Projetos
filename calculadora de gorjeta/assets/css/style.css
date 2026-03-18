@@ -1,3 +1,9 @@
+*{
+    margin: 0px;
+}
+body{
+    display: flex;
+}
 .calculadora {
     background: blue;
     width: 100%;
