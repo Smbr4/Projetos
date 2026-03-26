@@ -1,42 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Calculadora De Gorjeta</title>
-
+    <title>Calculadora De Gorjeta | Splitter</title>
 </head>
-
 <body>
-    <section class="Calculadora">
-       Bill
 
-        Select Tip %
-        5%
-        10%
-        15%
-        25%
-        50%
-        Custom
+    <header>
+        <img src="assets/img/logo.svg" alt="SPLITTER">
+    </header>
 
-        Number of People
+    <main class="calculadora-container">
+        <section class="configuracoes">
+            
+            <div class="campo-input">
+                <label for="conta">Conta</label>
+                <div class="input-wrapper">
+                    <img src="assets/img/icon-dollar.svg" alt="">
+                    <input type="number" id="conta" placeholder="0" step="0.01">
+                </div>
+            </div>
 
-        Tip Amount
-        / person
+            <div class="selecionar-gorjeta">
+                <h2>Selecione a Gorjeta %</h2>
+                <div class="grid-botoes">
+                    <button type="button" class="btn-tip">5%</button>
+                    <button type="button" class="btn-tip">10%</button>
+                    <button type="button" class="btn-tip ativo">15%</button>
+                    <button type="button" class="btn-tip">25%</button>
+                    <button type="button" class="btn-tip">50%</button>
+                    <input type="number" placeholder="Custom" class="input-custom">
+                </div>
+            </div>
 
-        Total
-        / person
+            <div class="campo-input">
+                <label for="pessoas">Número De Pessoas</label>
+                <div class="input-wrapper">
+                    <img src="assets/img/icon-person.svg" alt="">
+                    <input type="number" id="pessoas" placeholder="0">
+                </div>
+            </div>
+        </section>
 
-        Reset
-    </section>
-    <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-        Coded by <a href="#">Your Name Here</a>.
-    </div>
+        <section class="display-resultados">
+            <div class="resultados-grupo">
+                <div class="linha-resultado">
+                    <div class="texto">
+                        <span>Tip Amount</span>
+                        <small>/ person</small>
+                    </div>
+                    <div class="valor"></div>
+                </div>
+
+                <div class="linha-resultado">
+                    <div class="texto">
+                        <span>Total</span>
+                        <small>/ person</small>
+                    </div>
+                    <div class="valor"></div>
+                </div>
+            </div>
+
+            <button type="reset" class="btn-reset">RESET</button>
+        </section>
+    </main>
+
+    <footer class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Vitor Furtado Araújo</a>.
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
-
 </html>
