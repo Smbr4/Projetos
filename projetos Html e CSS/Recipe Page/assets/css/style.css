@@ -1,4 +1,112 @@
-@font-face {
-    font-family: fontPadrao;
-    src: url(assets\fonts\young-serif\YoungSerif-Regular.ttf);
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap');
+
+:root{
+--branco: hsl(0, 0%, 100%);
+--Stone-100: hsl(30, 54%, 90%);
+--Stone-150: hsl(30, 18%, 87%);
+--Stone-600: hsl(30, 10%, 34%);
+--Stone-900: hsl(24, 5%, 18%);
+--Brown-800: hsl(14, 45%, 36%);
+--Rose-800: hsl(332, 51%, 32%); 
+--Rose-50: hsl(330, 100%, 98%)
+
+}
+*{
+    box-sizing: border-box;
+    outline: 0;
+}
+body{
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--Stone-100);
+    display: grid; 
+    place-items: center;
+    min-height: 125vh;
+    padding: 5px;
+    font-size: 12px;
+}
+
+body h1{
+    font-family: 'Young serif', sans-serif;
+    color: var(--Stone-600);
+}
+
+main{
+    background-color: var(--branco);
+    max-width: 736px;
+    width: 90%;
+    padding: 40px;
+    border-radius: 24px;
+}
+
+.omelette{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.preparation li::marker{
+    color: var(--Rose-800);
+}
+
+.preparation{
+    padding: 10px;
+    background-color: var(--Rose-50);
+    border-radius: 15px;
+}
+
+.preparation h2{
+    color: var(--Rose-800);
+}
+
+.Ingredients h2{
+    color: var(--Stone-600);
+}
+
+.Instructions h2{
+    color: var(--Stone-600);
+}
+
+strong{
+    color: var(--Stone-900);
+}
+
+.nutritional h2{
+    color: var(--Stone-600);
+}
+
+.cal{
+    color: var(--Stone-600);
+}
+table{
+    margin-right: 15px;
+    border-collapse: collapse;
+    border: none;
+    padding: 12px 0px;
+    width: 100%;
+}
+
+table td{
+    padding: 12px 24px;
+}
+
+table tr{
+    border-bottom: 1px solid #E4E4E4;
+}
+table tr:last-child{
+    border-bottom: none;
+}
+
+li::marker{
+    color: var(--Brown-800);
+}
+
+footer{
+    padding: 10px;
+}
+
+footer a{ 
+    text-decoration: none;
+    color: var(--Stone-600);
 }
