@@ -7,41 +7,50 @@ function extensoes() {
 
         //chama as funções para o código executar
         iniciar() {
-            this.excluir();
+            this.eventosCard();
             this.menu();
         },
 
+        //monitora os eventos do nav
+        menu() {
+            const botaoPadrao= this.nav.querySelector('.all');
+            if (botaoPadrao) botaoPadrao.classList.add('clicado');
+
+            this.nav.addEventListener('click', (e) => {
+                let el = e.target;
+                if (el.tagName === 'BUTTON') this.todos(el);
+            })
+        },
+
         //Gerencia a remoção de cards e outras interações dentro da seção de extensões
-        excluir() {
+        eventosCard() {
             const divs = document.querySelectorAll('article');
             this.card.addEventListener('click', e => {
                 let el = e.target;
                 if (el.classList.contains('remover')) {
                     const card = el.closest('article');
-                    if (card) {
-                        card.remove();
-                    }
+                    if (card) card.remove();
+                    return;
+                    
                 };
-
-                if(el.type ==='checkbox'){
-                  if(el.checked === true){
-                    this.inativos();
-                  } else{
-                    this.ativos();
-                  }
+                //um pequeno if para evitar comportamentos desnecessários
+                //se o botão all tiver pressionado ele não aplica nenhuma classe
+                const botaoAll = this.nav.querySelector('.all')
+                if (botaoAll.classList.contains('clicado')){
+                    return;
+                } else 
+                    // essa parte serve para que quando o botão ativo ou inativo tiver clicado
+                    //se eu clicar no meu slide, ele vai acrescentar a classe de acordo
+                    if (el.type === 'checkbox'){
+                    if(el.checked === false){
+                        this.ativos();  
+                    } else{
+                        this.inativos();
+                    } 
                 }
-            })
+            });
         },
 
-        //e esse monitora os eventos do nav
-        menu() {
-            this.nav.addEventListener('click', (e) => {
-                let el = e.target;
-                if (el.tagName === 'BUTTON') {
-                    this.todos(el);
-                }
-            })
-        },
 
         //limpa qualquer elemento que esteja oculto
         limparClass() {
@@ -88,8 +97,8 @@ function extensoes() {
             elemento.classList.add('clicado');
 
             //chama um metódo diferente de acordo com o botão clicado
+            if (elemento.classList.contains('all')) this.limparClass()
             if (elemento.classList.contains('active')) this.ativos();
-            if (elemento.classList.contains('all')) this.limparClass();
             if (elemento.classList.contains('inactive')) this.inativos();
         },
     }
@@ -97,3 +106,4 @@ function extensoes() {
 
 const extensao = extensoes();
 extensao.iniciar();
+
