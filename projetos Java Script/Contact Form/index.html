@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-Br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="assets/CSS/style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Contact form</title>
 
 
 </head>
-<body>
 
-  <form>
+<body>
+  <main>
     <h1>Contact Us</h1>
-  
-   <h2> First Name</h2>
-    This field is required
-  
-    <h2>Last Name</h2>
-    This field is required
-  
-    <h2>Email Address</h2>
-    Please enter a valid email address
-    This field is required
-  
-    Query Type
-    General Enquiry
-    Support Request
-    Please select a query type
-  
-    Message
-    This field is required
-  
-    I consent to being contacted by the team
-    To submit this form, please consent to being contacted
-  
-    Submit
-  
-    Message Sent!
-    Thanks for completing the form. We'll be in touch soon!
-    
-  </form>
+
+    <form>
+      <p>
+      <div class="name">
+        <label for="Name" name="First Name">First Name</label>
+        <input type="text">
+
+        <label for="Name" name="Last Name">Last Name</label>
+        <input type="text">
+      </div>
+      <!--This field is required-->
+      </p>
+      <p>
+        <label for="email">Email Address</label>
+        <input type="email" name="E-mail">
+      </p>
+      <!--Please enter a valid email address
+      This field is required-->
+
+      <h2>Query Type</h2>
+      <div class="botoes">
+
+        <button>General Enquiry</button>
+
+        <button>Support Request</button>
+
+      </div>
+      <!-- Please select a query type -->
+      <div class="Descrição">
+        <label>Message: </label>
+        <input type="textarea" name="Descrição">
+      </div>
+      <!-- This field is required -->
+
+      <label>I consent to being contacted by the team</label>
+      <input type="checkbox" name="confirm">
+
+      <button>Submit</button>
+      <!-- To submit this form, please consent to being contacted 
+
+
+      Message Sent!
+      Thanks for completing the form. We'll be in touch soon!-->
+    </form>
+
+    <script src="assets/javaScript/main.js"></script>
+  </main>
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </footer>
 </body>
+
 </html>
