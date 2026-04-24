@@ -15,33 +15,58 @@
 --cinzaEscuro: hsl(187, 24%, 22%);
 }
 @media (min-width: 375px) {
-    main{
+    body{
         max-width: 400px; 
     };
 }
 
 *{
-    margin: 0 auto;
+    margin: auto;
 }
-
-body{
-    background: var(--verde);
-    font-family: 'fonte1', sans-serif;
-}
-
 form {
-    width: 90%;
-    max-width: 800px;
-    padding: auto;
-}
-
-.name{
-    display: flex;
-    flex-direction: row;
-    justify-content:  center;
-}
-.email{
     display: flex;
     flex-direction: column;
-    justify-content: right;
+}
+.dados{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    float: left;
+}
+input{
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.nameA{
+    display: flex;
+    flex-direction: row;
+}
+.last .first{
+    flex-direction: column;
+}
+.email{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.email input {
+    width: 380px;
+
+}
+
+.botoes{
+    display: flex;
+    flex-direction: row;
+    float: left;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.botoes input{
+    width: 120px;
+    border-radius: 10px;
+    padding: 15px;
+    background: var(--branco);
 }
