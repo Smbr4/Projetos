@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+:root{
+    --font: #4C5255;
+    --background: #3EC8FF;
+    --seila: #6195AA;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+@media screen and (width: 600px) {
+    main{
+        min-width: 400px;
+    }
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: rgb(0, 0, 0);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*centraliza conteudo vertical */
+    align-items: center; /*centraliza conteudo horizontal*/
+    height: 100vh;
+    min-width: 400px;
+    background: var(--background);
+}
+
+.principal{
+    height: auto;
+    min-width: 400px;
+    max-width: 10000px;
+    background-color: var(--seila);
+    padding: 30px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.form input{
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: none;
+
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+
+#send{
+    background: var(--background);
+    color: white;
+    width: 100%;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    
+}
+
+a:hover{
+    color: #bcdfec;
+}

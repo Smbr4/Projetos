@@ -1,6 +1,5 @@
-const ejs = require('ejs');
+//Trata a requisição.
 
-exports.paginaInicial = (req, res, next) => {
-    res.render('index')
-    next();
+exports.paginaInicial = (req, res) => {
+    res.render('home')
 }

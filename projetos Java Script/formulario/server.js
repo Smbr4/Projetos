@@ -1,3 +1,5 @@
+//configura a aplicação
+
 require('dotenv').config();
 
 const express = require('express')
@@ -18,7 +20,7 @@ const { error } = require('console');
 const { connect } = require('http2');
 
 app.use(express.urlencoded({extended:true}))  //interpreta os dados do formulário html e coloca no body
-app.use(express.static(path.resolve(__dirname, 'public')))
+app.use(express.static(path.resolve(__dirname, 'frontEnd')))
 
 
 //códigos para carregar os templates
