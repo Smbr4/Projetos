@@ -1,16 +1,23 @@
+import { useState } from "react";
 import extension from "../data/extensions";
+import HeaderBody from "./headerBody";
 
 const Extensions = () => {
-  const input = document.querySelector('#check') as HTMLInputElement;
-  function hideCard(id){
-    if(input.checked === true){
-      id ==
-    }
+  const [receiveID, setReceive] = useState([''])
+
+  function receive(e:boolean, key: string) {
+
+    if (e === true) (
+      setReceive([...receiveID,  key])
+    )
+    else (
+      setReceive(receiveID.filter((e)=> e != key)
+    )
+    )
   }
 
-
   interface Extension {
-    id: string | number;
+    id: string;
     img: string;
     name: string;
     description: string;
@@ -31,22 +38,26 @@ const Extensions = () => {
           <div className="card-botoes">
             <button className="remover">Remove</button>
             <label className="switch">
-              <input type="checkbox"  id="check"/>
+              <input type="checkbox"  onChange={(e)=> receive(e.target.checked, id)}/>
               <span className="slider"></span>
             </label>
           </div>
         </div>
 
-      </article>  
+      </article>
     ),
   );
 
   return (
     <>
+    <div>
+      <HeaderBody receiveID ={receiveID}/>
 
-        <div className="extensoes">
-          {renderExtension}
-        </div>
+    </div>
+      <div className="extensoes">
+        {renderExtension}
+
+      </div>
 
     </>
   )
