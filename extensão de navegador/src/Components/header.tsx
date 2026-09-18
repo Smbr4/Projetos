@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <>
-        <html lang="pt-Br"/>
+        <html lang="pt-BR"/>
         <head>
             <meta charSet="UTF-8" />
             <link rel="shortcut icon" href="public/favicon-32x32.png" type="image/x-icon" />

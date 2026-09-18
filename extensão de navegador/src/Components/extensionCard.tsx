@@ -3,16 +3,16 @@ import extension from "../data/extensions";
 import HeaderBody from "./headerBody";
 
 const Extensions = () => {
-  const [receiveID, setReceive] = useState([''])
-
-  function receive(e:boolean, key: string) {
+  const [receiveID, setReceive] = useState<string[]>([])
+  const [view, setView] = useState<'all' | 'active' | 'inactive'>('all')
+  function receive(e: boolean, key: string) {
 
     if (e === true) (
-      setReceive([...receiveID,  key])
+      setReceive(prev => [...prev, key])
     )
     else (
-      setReceive(receiveID.filter((e)=> e != key)
-    )
+      setReceive(receiveID.filter((e) => e != key)
+      )
     )
   }
 
@@ -23,7 +23,20 @@ const Extensions = () => {
     description: string;
   }
 
-  const renderExtension = extension.map(
+  let filteredExtensions;
+
+  if (view === 'all') {
+    filteredExtensions = extension;
+  } else if (view === 'active') {
+    filteredExtensions = extension.filter(
+      ext => receiveID.includes(ext.id)
+    );
+  } else {
+    filteredExtensions = extension.filter(
+      ext => !receiveID.includes(ext.id)
+    );
+  }
+  const renderExtension = filteredExtensions.map(
     ({ id, img, name, description }: Extension) => (
 
       <article key={id}>
@@ -38,7 +51,7 @@ const Extensions = () => {
           <div className="card-botoes">
             <button className="remover">Remove</button>
             <label className="switch">
-              <input type="checkbox"  onChange={(e)=> receive(e.target.checked, id)}/>
+              <input type="checkbox" checked= {receiveID.includes(id)} onChange={(e) => receive(e.target.checked, id)} />
               <span className="slider"></span>
             </label>
           </div>
@@ -50,13 +63,10 @@ const Extensions = () => {
 
   return (
     <>
-    <div>
-      <HeaderBody receiveID ={receiveID}/>
+      <HeaderBody setView={setView}/>
 
-    </div>
       <div className="extensoes">
         {renderExtension}
-
       </div>
 
     </>
