@@ -1,6 +1,7 @@
 
 //Quando alguém usar o componente HeaderBody, ele precisa receber uma prop chamada setView, e essa prop precisa ser uma função com determinado formato.
 interface HeaderBodyProps {
+    //uma função do React capaz de atualizar um estado cujo valor é 'all' | 'active' | 'inactive'.
     setView: React.Dispatch<
     //tipo do valor que pode ser passado para setView
         React.SetStateAction<'all' | 'active' | 'inactive'>
