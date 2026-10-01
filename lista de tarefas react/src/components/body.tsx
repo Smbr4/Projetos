@@ -1,8 +1,7 @@
 import { useState } from "react"
 function Body() {
-    console.log('renderizou')
     const [itens, setItens] = useState([''])
-    const [inputValue, setInput] = useState('')
+    const [inputValue, setInput] = useState()
     function getInput(e: React.SubmitEvent<HTMLInputElement>) {
       setInput(e.target.value)
     }
@@ -11,7 +10,7 @@ function Body() {
         setItens([...itens, inputValue])
     }
         const listItem = itens.map((item, id: number) => (
-            <li key={(id + 1).toString()}>
+            <li key={(id).toString()}>
                 {item}
             </li>
         ))
@@ -21,7 +20,7 @@ function Body() {
 
             <main>
                     <input type="text" onSubmit={(e) => getInput(e)} />
-                    <button onClick={() => addItem}>Add</button>
+                    <button onClick={addItem}>Add</button>
                     <ul>
                         {listItem}
                     </ul>
