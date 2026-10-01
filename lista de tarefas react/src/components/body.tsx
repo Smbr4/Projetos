@@ -19,7 +19,7 @@ function Body() {
     return (
 
             <main>
-                    <input type="text" onSubmit={(e) => getInput(e)} />
+                    <input type="text" onSubmit={(e) => getInput(e.target.value)} />
                     <button onClick={addItem}>Add</button>
                     <ul>
                         {listItem}
